@@ -1,0 +1,13 @@
+# Python基础环境 (Python 3.12.12)
+# 注：Python版本需手动安装，不在requirements.txt中指定
+
+# PyTorch核心依赖
+torch==2.9.1+cu128
+orchvision==0.24.1+cu128
+
+# YOLO核心依赖
+ultralytics==8.3.239
+opencv-python==4.12.0.88
+numpy==2.2.6
+pillow==12.0.0
+matplotlib==3.10.8

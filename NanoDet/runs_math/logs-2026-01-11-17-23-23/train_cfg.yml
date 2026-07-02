@@ -1,0 +1,159 @@
+class_names:
+- '0'
+- '1'
+- '2'
+- '3'
+- '4'
+- '5'
+- '6'
+- '7'
+- '8'
+- '9'
+- +
+- '-'
+- x
+- "\xF7"
+- (
+- )
+data:
+  train:
+    ann_path: C:\Users\hyper\Desktop\program\.Gsing\data\annotations\coco_detection.json
+    img_path: C:\Users\hyper\Desktop\program\.Gsing\data\video_extract_images
+    input_size:
+    - 640
+    - 1024
+    keep_ratio: true
+    name: CocoDataset
+    pipeline:
+      brightness: 0.12
+      contrast:
+      - 0.85
+      - 1.15
+      flip: 0.0
+      normalize:
+      - - 103.53
+        - 116.28
+        - 123.675
+      - - 57.375
+        - 57.12
+        - 58.395
+      perspective: 0.0
+      rotation: 2
+      saturation:
+      - 0.85
+      - 1.15
+      scale:
+      - 0.9
+      - 1.1
+      shear: 0.0
+      stretch:
+      - - 1.0
+        - 1.0
+      - - 1.0
+        - 1.0
+      translate: 0.05
+  val:
+    ann_path: C:\Users\hyper\Desktop\program\.Gsing\data\annotations\coco_detection.json
+    img_path: C:\Users\hyper\Desktop\program\.Gsing\data\video_extract_images
+    input_size:
+    - 640
+    - 1024
+    keep_ratio: true
+    name: CocoDataset
+    pipeline:
+      normalize:
+      - - 103.53
+        - 116.28
+        - 123.675
+      - - 57.375
+        - 57.12
+        - 58.395
+device:
+  gpu_ids:
+  - 0
+  precision: 32
+evaluator:
+  name: CocoDetectionEvaluator
+  save_key: mAP
+log:
+  interval: 5
+model:
+  arch:
+    backbone:
+      activation: LeakyReLU
+      model_size: 1.0x
+      name: ShuffleNetV2
+      out_stages:
+      - 2
+      - 3
+      - 4
+    fpn:
+      in_channels:
+      - 116
+      - 232
+      - 464
+      name: PAN
+      num_outs: 3
+      out_channels: 64
+      start_level: 0
+    head:
+      feat_channels: 64
+      input_channel: 64
+      loss:
+        loss_bbox:
+          loss_weight: 2.0
+          name: GIoULoss
+        loss_dfl:
+          loss_weight: 0.25
+          name: DistributionFocalLoss
+        loss_qfl:
+          beta: 2.0
+          loss_weight: 1.0
+          name: QualityFocalLoss
+          use_sigmoid: true
+      name: NanoDetHead
+      norm_cfg:
+        type: BN
+      num_classes: 16
+      octave_base_scale: 4
+      reg_max: 7
+      scales_per_octave: 1
+      share_cls_reg: true
+      stacked_convs: 2
+      strides:
+      - 8
+      - 16
+      - 32
+    name: OneStageDetector
+nms_thres: 0.4
+save_dir: C:\Users\hyper\Desktop\program\.Gsing\NanoDet\runs_math
+schedule:
+  lr_schedule:
+    gamma: 0.1
+    milestones:
+    - 6
+    - 12
+    name: MultiStepLR
+  optimizer:
+    grad_clip: 5.0
+    lr: 0.0003
+    momentum: 0.9
+    name: SGD
+    weight_decay: 5.0e-05
+  total_epochs: 15
+  val_intervals: 1
+  warmup:
+    name: linear
+    ratio: 0.1
+    steps: 50
+score_thres: 0.35
+test: {}
+train:
+  accelerator: gpu
+  batch_size: 1
+  devices: 1
+  drop_last: false
+  num_workers: 0
+  persistent_workers: false
+  precision: 16
+  strategy: auto

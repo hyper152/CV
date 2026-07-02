@@ -1,0 +1,117 @@
+# 模型训练结果保存目录（中文路径可能报错，建议用英文）
+save_dir: C:\\Users\\hyper\\Desktop\\program\\.Gsing\\NanoDet\\runs
+
+model:
+  arch:
+    name: OneStageDetector
+    backbone:
+      name: ShuffleNetV2
+      model_size: 1.0x
+      out_stages: [2,3,4]
+      activation: LeakyReLU
+    fpn:
+      name: PAN
+      in_channels: [116, 232, 464]
+      out_channels: 96
+      start_level: 0
+      num_outs: 3
+    head:
+      name: NanoDetHead
+      num_classes: 4        # 4个类别（tool/device/food/remedy）
+      input_channel: 96
+      feat_channels: 96
+      stacked_convs: 2
+      share_cls_reg: True
+      octave_base_scale: 5
+      scales_per_octave: 1
+      strides: [8, 16, 32]
+      reg_max: 7
+      norm_cfg:
+        type: BN
+      loss:
+        loss_qfl:
+          name: QualityFocalLoss
+          use_sigmoid: True
+          beta: 2.0
+          loss_weight: 1.0
+        loss_dfl:
+          name: DistributionFocalLoss
+          loss_weight: 0.25
+        loss_bbox:
+          name: GIoULoss
+          loss_weight: 2.0
+
+data:
+  train:
+    name: CocoDataset
+    # 方案1：使用正斜杠 /（推荐，跨平台兼容，无需转义）
+    img_path: C:/Users/hyper/Desktop/program/.Gsing/.data/task/images/train
+    ann_path: C:/Users/hyper/Desktop/program/.Gsing/.data/task/annotations/instances_train.json
+    input_size: [640,640]
+    keep_ratio: True
+    pipeline:
+      perspective: 0.0
+      scale: [0.6, 1.4]
+      stretch: [[1, 1], [1, 1]]
+      rotation: 0
+      shear: 0
+      translate: 0.2
+      flip: 0.5
+      brightness: 0.2
+      contrast: [0.6, 1.4]
+      saturation: [0.5, 1.2]
+      normalize: [[103.53, 116.28, 123.675], [57.375, 57.12, 58.395]]
+  val:
+    name: CocoDataset
+    # 方案1：使用正斜杠 /（推荐，跨平台兼容，无需转义）
+    img_path: C:/Users/hyper/Desktop/program/.Gsing/.data/task/images/val
+    ann_path: C:/Users/hyper/Desktop/program/.Gsing/.data/task/annotations/instances_val.json
+    input_size: [640,640]
+    keep_ratio: True
+    pipeline:
+      normalize: [[103.53, 116.28, 123.675], [57.375, 57.12, 58.395]]
+
+device:
+  gpu_ids: [0]             # 只用第0块GPU（无GPU则注释这行，自动用CPU）
+  workers_per_gpu: 4       # 8G显存建议4，减少内存占用
+  batchsize_per_gpu: 16    # 8G显存设16，16G设32，避免OOM报错
+
+schedule:
+  optimizer:
+    name: SGD
+    lr: 0.014              # 批次16对应0.014（原192对应0.14，按比例16/192*0.14=0.014）
+    momentum: 0.9
+    weight_decay: 0.0001
+  warmup:
+    name: linear
+    steps: 300
+    ratio: 0.1
+  total_epochs: 150         # 150轮
+  lr_schedule:
+    name: MultiStepLR
+    milestones: [50,75,100] # 衰减节点
+    gamma: 0.1
+  val_intervals: 1         # 每轮验证一次，及时看效果
+  load_model: weights/nanodet_m.ckpt  # 修正：末尾补充空格，语法严谨化
+
+evaluator:
+  name: CocoDetectionEvaluator
+  save_key: mAP
+
+log:
+  interval: 10
+
+# 类别列表（和标注文件categories完全对应）
+class_names: ['tool', 'device', 'food', 'remedy']
+
+# ===================== 新增训练策略配置 =====================
+train:
+  strategy: "auto"         # 解决strategy=None错误的核心配置
+  accelerator: "gpu"       # 指定用GPU训练（无GPU则改为"cpu"）
+  devices: 1               # 使用1块GPU（和device.gpu_ids[0]对应）
+  precision: 32            # 精度设置（32位浮点，兼容大部分场景）
+
+# ===================== 关键新增：推理置信度阈值 =====================
+# 新增这一行，设置检测的置信度阈值为0.45
+score_thres: 0.45
+nms_thres: 0.5

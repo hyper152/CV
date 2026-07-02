@@ -1,0 +1,26 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: g++.exe build active file",
+            "command": "C:/.Environment/mingw64/bin/g++.exe",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "${file}",
+                "-o",
+                "C:/Users/a/Desktop/.cqu/bot/code/camera/output/${fileBasenameNoExtension}.exe", // 与launch.json的program路径一致
+                "-I", "C:/.Environment/opencv/build/x64/mingw/install/include",
+                "-L", "C:/.Environment/opencv/build/x64/mingw/lib",  // 改为lib目录（通常存放静态库）
+                "-lopencv_world4120"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"  // 改为当前文件目录，避免路径混乱
+            },
+            "problemMatcher": ["$gcc"],
+            "group": "build",
+            "detail": "compiler: C:/.Environment/mingw64/bin/g++.exe"
+        }
+    ]
+}

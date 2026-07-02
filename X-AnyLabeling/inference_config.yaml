@@ -1,0 +1,23 @@
+# X-AnyLabeling 推理核心配置（强制GPU加速）
+app:
+  name: X-AnyLabeling
+  version: 3.3.3
+
+# 全局推理设备强制配置（优先级最高）
+inference_device: "cuda"  # 强制GPU，不可改：cuda/cpu
+dnn_backend: "CUDA"       # OpenCV DNN后端强制GPU，不可改：CUDA/CPU/OPENCV
+dnn_target: "CUDA"        # 新增补全：DNN目标设备强制GPU，避免遗漏
+
+# 模型加载配置（YOLO通用，适配绝大多数ONNX模型）
+models:
+  - name: default_yolo
+    type: onnx
+    # 模型路径：替换为你自己的ONNX模型绝对路径（无中文/空格，文件需存在）
+    path: "C:\\Users\\hyper\\Desktop\\program\\.Gsing\\X-AnyLabeling\\weights\\yolov8n.onnx"
+    input_size: [640, 640]  # YOLO通用输入尺寸，和模型一致即可
+    conf_threshold: 0.5     # 置信度阈值，可按需调（0.3-0.8）
+    iou_threshold: 0.45     # IOU非极大值抑制阈值，固定0.45
+    mean: [0.0, 0.0, 0.0]   # 归一化均值，ONNX模型已处理，默认0即可
+    std: [255.0, 255.0, 255.0]  # 归一化标准差，默认255即可
+    rgb: true               # 模型输入为RGB格式，不可改
+    swap_rb: false          # 无需交换R/B通道，不可改

@@ -1,0 +1,42 @@
+# X-AnyLabeling task1 模型配置 - 最终可用版（强制GPU）
+name: math
+display_name: math  
+type: yolov8
+model_path: C:\Users\hyper\Desktop\program\.Gsing\YOLO\weights\math11.onnx
+input_width: 1920
+input_height: 1080
+stride: 32
+confidence_threshold: 0.3
+nms_threshold: 0.45
+device: cuda:0  # 强制指定GPU0，优先级高于全局配置
+
+# 核心：类别ID与名称映射（X-AnyLabeling必须-显示检测框标签用）
+classes:
+  0: "0"
+  1: "1"
+  2: "2"
+  3: "3"
+  4: "4"
+  5: "5"
+  6: "6"
+  7: "7"
+  8: "8"
+  9: "9"
+  10: "+"
+  11: "-"
+  12: "x"
+  13: "÷"
+  14: "("
+  15: ")"
+
+# ONNX模型输入输出配置（YOLOv8-ONNX标准，无需修改）
+input_name: "images"
+output_names: ["output0"]
+
+# 图像预处理（YOLOv8官方标准流程，匹配训练时的预处理，关键！）
+mean: [0.0, 0.0, 0.0]
+std: [1.0, 1.0, 1.0]
+scale: 0.00392156862745098  # 等价于1/255，归一化到[0,1]
+rgb: true
+padding_color: [114, 114, 114]  # YOLOv8默认黑边填充色，补全防止检测框偏移
+swap_rb: false  # 配合rgb:true，与YOLOv8训练的通道顺序一致，避免检测失效

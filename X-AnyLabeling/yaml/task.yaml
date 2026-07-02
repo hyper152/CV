@@ -1,0 +1,24 @@
+# X-AnyLabeling task1 模型配置 - 修正版
+name: task
+display_name: task
+type: yolov8
+model_path: C:\Users\hyper\Desktop\program\.Gsing\YOLO\weights\task2.onnx
+input_width: 960
+input_height: 960
+stride: 32
+confidence_threshold: 0.3  # 使用完整的参数名
+nms_threshold: 0.45
+device: cuda:0  # 或改为 "cpu" 如果GPU有问题
+
+# 关键修正：使用 classes 而不是 labels
+classes: ["tool", "device", "food", "remedy"]
+
+# ONNX模型输入输出配置
+input_name: "images"  # 确认ONNX模型输入名
+output_names: ["output0"]  # 确认ONNX模型输出名
+
+# 图像预处理参数
+mean: [0.0, 0.0, 0.0]
+std: [1.0, 1.0, 1.0]  # 更常见的标准化值
+scale: 0.00392156862745098  # 1/255，用于归一化
+rgb: true
