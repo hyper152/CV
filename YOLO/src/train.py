@@ -3,10 +3,10 @@ import os                     # 导入os库，用于路径处理和文件存在�
 
 # ===================== 全局配置：路径与权重设置 =====================
 # 1. 你的data.yaml（保持原有路径不变）
-DATA = r"C:\Users\hyper\Desktop\program\.Gsing\YOLO\yaml\math.yaml"
-    
-# 2. 权重路径（简化，避免层级错误，保持原有路径不变）
-WEIGHTS_DIR = r"C:\Users\hyper\Desktop\program\.Gsing\YOLO\weights"
+DATA = r"C:\Users\23615\Desktop\.hyper\CV\YOLO\yaml\math.yaml"
+
+# 2. 权重路径
+WEIGHTS_DIR = r"C:\Users\23615\Desktop\.hyper\CV\YOLO\weights"
 os.makedirs(WEIGHTS_DIR, exist_ok=True)
 WEIGHTS = os.path.join(WEIGHTS_DIR, 'yolov8s.pt')
 
