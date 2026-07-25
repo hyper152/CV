@@ -16,46 +16,37 @@
 
 ### Git Bash
 ```bash
-# 直接使用完整 python 路径
-PYTHONIOENCODING=utf-8 "C:/Users/23615/.conda/envs/cv/python.exe" script.py
-
-# 或 conda 激活后运行
 conda activate cv
 PYTHONIOENCODING=utf-8 python script.py
 ```
 
 ### PowerShell
 ```powershell
-# 先设置编码，再运行
-$env:PYTHONIOENCODING="utf-8"
-C:/Users/23615/.conda/envs/cv/python.exe CV\YOLO\src\test.py
-
-# 或 conda 激活后
+# 先激活环境，再运行
 conda activate cv
 $env:PYTHONIOENCODING="utf-8"
-python CV\YOLO\src\test.py
+python CV/YOLO/src/test.py
 ```
 
 ## 环境检测
 
 ### Git Bash
 ```bash
-PYTHONIOENCODING=utf-8 "C:/Users/23615/.conda/envs/cv/python.exe" CV\YOLO\src\test.py
+conda activate cv
+PYTHONIOENCODING=utf-8 python CV/YOLO/src/test.py
 ```
 
 ### PowerShell
 ```powershell
-$env:PYTHONIOENCODING="utf-8"; "C:/Users/23615/.conda/envs/cv/python.exe" CV\YOLO\src\test.py
+conda activate cv
+$env:PYTHONIOENCODING="utf-8"; python CV/YOLO/src/test.py
 ```
 
 ## 预测
 
 ```bash
-# 使用 GPU (device=0)
-yolo predict model=weights/yolov8s.pt source="path/to/video_or_image" device=0
-
-# 或通过 python
-PYTHONIOENCODING=utf-8 -c "
+conda activate cv
+python -c "
 from ultralytics import YOLO
 model = YOLO('weights/yolov8s.pt')
 results = model.predict(source='path/to/video', device=0, save=True)
@@ -71,7 +62,15 @@ yolo export model=weights/math12.pt format=onnx imgsz=1080 opset=21 half=False
 
 ## 训练
 
+### Git Bash
 ```bash
+conda activate cv
+PYTHONIOENCODING=utf-8 python CV/YOLO/src/train.py
+```
+
+### PowerShell
+```powershell
+conda activate cv
 $env:PYTHONIOENCODING="utf-8"
-& "C:/Users/23615/.conda/envs/cv/python.exe" CV/YOLO/src/train.py
+python CV/YOLO/src/train.py
 ```
