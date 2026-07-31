@@ -3,7 +3,8 @@ import os
 import glob
 
 # ====================== 【所有配置项都在这里，按需修改，其他不用动】 ======================
-TARGET_FOLDER = r"C:\Users\23615\Desktop\.hyper\PC\CV\data\img\steelball\mp4"  # 视频文件夹根目录（同时也是图片保存目录）
+TARGET_FOLDER = r"C:\Users\23615\Desktop\.hyper\PC\CV\data\img\steelball\mp4"  # 视频文件夹根目录（放 mp4）
+SAVE_FOLDER = os.path.join(TARGET_FOLDER, "..", "images")  # 图片保存目录 = 视频文件夹的上一级 images 文件夹
 MERGE_SAVE = True                         # ✅核心开关：True=所有图片放同一个文件夹 | False=分视频创建子文件夹
 EXTRACT_MODE = 2                          # 提取模式【必选】
                                           # 1=按帧率提取(推荐)  2=提取视频的每一帧  3=按固定秒数提取
@@ -87,7 +88,7 @@ def video2images(video_path, save_root):
 def batch_extract():
     """批量遍历文件夹，提取所有视频为图片"""
     # 创建总保存目录
-    os.makedirs(TARGET_FOLDER, exist_ok=True)
+    os.makedirs(SAVE_FOLDER, exist_ok=True)
     # 遍历目标文件夹内所有文件，筛选视频
     all_video_paths = []
     for file_path in glob.glob(os.path.join(TARGET_FOLDER, "*")):
@@ -105,13 +106,13 @@ def batch_extract():
     print(f"✅ 扫描完成！共找到 {len(all_video_paths)} 个视频文件")
     print(f"✅ 保存模式：{'【合并保存】所有图片放入同一个文件夹' if MERGE_SAVE else '【分文件夹保存】每个视频单独存放'}")
     print(f"✅ 提取模式：{['按帧率提取', '提取全部帧', '按秒间隔提取'][EXTRACT_MODE-1]}")
-    print(f"✅ 保存根目录：{os.path.abspath(TARGET_FOLDER)}")
+    print(f"✅ 保存根目录：{os.path.abspath(SAVE_FOLDER)}")
     print("="*70)
 
     # 逐个处理所有视频
     total_save = 0
     for idx, video_path in enumerate(all_video_paths, 1):
-        save_num = video2images(video_path, TARGET_FOLDER)
+        save_num = video2images(video_path, SAVE_FOLDER)
         total_save += save_num
 
     # 提取完成汇总信息
@@ -119,7 +120,7 @@ def batch_extract():
     print(f"🎉 全部提取完成！✅ 结果汇总")
     print(f"📌 共处理视频数：{len(all_video_paths)} 个")
     print(f"📌 共提取图片数：{total_save} 张")
-    print(f"📌 图片保存路径：{os.path.abspath(TARGET_FOLDER)}")
+    print(f"📌 图片保存路径：{os.path.abspath(SAVE_FOLDER)}")
     print("="*70)
 
 if __name__ == "__main__":
