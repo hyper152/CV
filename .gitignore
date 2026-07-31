@@ -6,5 +6,5 @@
 *.bz2
 *.xz
 *.iso
-data/
+data/img/
 YOLO/runs/
