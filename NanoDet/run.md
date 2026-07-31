@@ -5,7 +5,7 @@ python tools/train.py yml/math.yml
 python demo/demo.py webcam --config yml/math.yml --model runs_math\model_best\model_best.ckpt --camid 1    
 
 # 检测单张图片
-python demo/demo.py image --config yml/math.yml --model weights\MATH.ckpt --path "C:\Users\hyper\Desktop\program\.Gsing\data\generated_math_nanodet\images\train\train_000000.png"
+python demo/demo.py image --config yml/math.yml --model weights\MATH.ckpt --path "C:\Users\23615\Desktop\.hyper\PC\CV\data\generated_math_nanodet\images\train\train_000000.png"
 
 # 检测视频
 python demo/demo.py video --config 配置文件.yml --model 模型路径.ckpt --path 视频路径.mp4

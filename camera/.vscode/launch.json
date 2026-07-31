@@ -5,7 +5,7 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "C:/Users/hyper/Desktop/program/.Gsing/camera/output/${fileBasenameNoExtension}.exe", // 使用变量确保与编译输出一致
+            "program": "C:/Users/23615/Desktop/.hyper/PC/CV/camera/output/${fileBasenameNoExtension}.exe", // 使用变量确保与编译输出一致
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",

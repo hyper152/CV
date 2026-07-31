@@ -13,7 +13,7 @@ models:
   - name: default_yolo
     type: onnx
     # 模型路径：替换为你自己的ONNX模型绝对路径（无中文/空格，文件需存在）
-    path: "C:\\Users\\hyper\\Desktop\\program\\.Gsing\\X-AnyLabeling\\weights\\yolov8n.onnx"
+    path: "C:\\Users\\23615\\Desktop\\.hyper\\PC\\CV\\YOLO\\weights\\yolov8n.onnx"
     input_size: [640, 640]  # YOLO通用输入尺寸，和模型一致即可
     conf_threshold: 0.5     # 置信度阈值，可按需调（0.3-0.8）
     iou_threshold: 0.45     # IOU非极大值抑制阈值，固定0.45

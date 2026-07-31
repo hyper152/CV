@@ -44,7 +44,7 @@ def check_model_output(model_path):
         return None 
 
 # 使用你的模型路径  
-model_path = "C:/Users/23615/Desktop/.hyper/Gsing/CV/YOLO/weights/task1.onnx"
+model_path = "C:/Users/23615/Desktop/.hyper/PC/CV/YOLO/weights/task1.onnx"
 num_classes = check_model_output(model_path)
 
 if num_classes:

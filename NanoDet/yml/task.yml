@@ -1,5 +1,5 @@
 # 模型训练结果保存目录（中文路径可能报错，建议用英文）
-save_dir: C:\\Users\\hyper\\Desktop\\program\\.Gsing\\NanoDet\\runs
+save_dir: C:\\Users\\23615\\Desktop\\.hyper\\PC\\CV\\NanoDet\\runs
 
 model:
   arch:
@@ -45,8 +45,8 @@ data:
   train:
     name: CocoDataset
     # 方案1：使用正斜杠 /（推荐，跨平台兼容，无需转义）
-    img_path: C:/Users/hyper/Desktop/program/.Gsing/.data/task/images/train
-    ann_path: C:/Users/hyper/Desktop/program/.Gsing/.data/task/annotations/instances_train.json
+    img_path: C:/Users/23615/Desktop/.hyper/PC/CV/data/img/task/images/train
+    ann_path: C:/Users/23615/Desktop/.hyper/PC/CV/data/img/task/annotations/instances_train.json
     input_size: [640,640]
     keep_ratio: True
     pipeline:
@@ -64,8 +64,8 @@ data:
   val:
     name: CocoDataset
     # 方案1：使用正斜杠 /（推荐，跨平台兼容，无需转义）
-    img_path: C:/Users/hyper/Desktop/program/.Gsing/.data/task/images/val
-    ann_path: C:/Users/hyper/Desktop/program/.Gsing/.data/task/annotations/instances_val.json
+    img_path: C:/Users/23615/Desktop/.hyper/PC/CV/data/img/task/images/val
+    ann_path: C:/Users/23615/Desktop/.hyper/PC/CV/data/img/task/annotations/instances_val.json
     input_size: [640,640]
     keep_ratio: True
     pipeline:

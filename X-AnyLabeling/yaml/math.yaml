@@ -2,7 +2,7 @@
 name: math
 display_name: math  
 type: yolov8
-model_path: C:\Users\hyper\Desktop\program\.Gsing\YOLO\weights\math11.onnx
+model_path: C:\Users\23615\Desktop\.hyper\PC\CV\YOLO\weights\math11.onnx
 input_width: 1920
 input_height: 1080
 stride: 32

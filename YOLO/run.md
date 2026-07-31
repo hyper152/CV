@@ -10,7 +10,7 @@
 | **GPU** | NVIDIA GeForce RTX 2060 SUPER |
 | **cuDNN** | 9.1.0 |
 | **Ultralytics** | 8.4.105 |
-| **路径** | `C:\Users\23615\Desktop\.hyper\CV\YOLO` |
+| **路径** | `C:\Users\23615\Desktop\.hyper\PC\CV\YOLO` |
 
 ## 激活环境
 
@@ -25,7 +25,7 @@ PYTHONIOENCODING=utf-8 python script.py
 # 先激活环境，再运行
 conda activate cv
 $env:PYTHONIOENCODING="utf-8"
-python CV/YOLO/src/test.py
+python PC\CV\YOLO\src\train.py
 ```
 
 ## 环境检测
@@ -33,13 +33,13 @@ python CV/YOLO/src/test.py
 ### Git Bash
 ```bash
 conda activate cv
-PYTHONIOENCODING=utf-8 python CV/YOLO/src/test.py
+PYTHONIOENCODING=utf-8 python PC/CV/YOLO/src/test.py
 ```
 
 ### PowerShell
 ```powershell
 conda activate cv
-$env:PYTHONIOENCODING="utf-8"; python CV/YOLO/src/test.py
+$env:PYTHONIOENCODING="utf-8"; python PC/CV/YOLO/src/test.py
 ```
 
 ## 预测
@@ -65,12 +65,12 @@ yolo export model=weights/math12.pt format=onnx imgsz=1080 opset=21 half=False
 ### Git Bash
 ```bash
 conda activate cv
-PYTHONIOENCODING=utf-8 python CV/YOLO/src/train.py
+PYTHONIOENCODING=utf-8 python PC/CV/YOLO/src/train.py
 ```
 
 ### PowerShell
 ```powershell
 conda activate cv
 $env:PYTHONIOENCODING="utf-8"
-python CV/YOLO/src/train.py
+python PC/CV/YOLO/src/train.py
 ```

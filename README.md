@@ -47,7 +47,7 @@ conda activate xany
 
 ```bash
 conda activate pytorch312
-cd Gsing/CV/YOLO
+cd PC/CV/YOLO
 pip install -r requirements.txt
 ```
 
@@ -98,7 +98,7 @@ yolo export model=weights/math12.pt format=onnx imgsz=1080 opset=21 half=False
 
 ```bash
 conda activate xany
-cd Gsing/CV/X-AnyLabeling
+cd PC/CV/X-AnyLabeling
 python anylabeling_app.py
 ```
 

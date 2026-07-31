@@ -1,0 +1,10 @@
+# Steellball 数据集配置 (YOLO格式)
+# 单类：steel_ball
+
+path: PC/CV/data/img/steelball   # 相对运行目录（CWD=.hyper）
+train: images/train           # 训练集：444张
+val: images/val               # 验证集：127张
+test: images/test             # 测试集：64张
+
+nc: 1                         # 类别数
+names: ['steel_ball']         # 类别名

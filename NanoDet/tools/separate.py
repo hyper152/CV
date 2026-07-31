@@ -114,9 +114,9 @@ def split_coco_data_8_to_2(
 # ---------------------- 基于你的实际路径配置（无需修改） ----------------------
 if __name__ == "__main__":
     # 配置你的实际文件/目录路径
-    ORIGINAL_COCO_JSON = r"C:\Users\hyper\Desktop\program\.Gsing\.data\task-coco.json"
-    ORIGINAL_TRAIN_IMAGE_DIR = r"C:\Users\hyper\Desktop\program\.Gsing\.data\task\images\train"
-    OUTPUT_TASK_DIR = r"C:\Users\hyper\Desktop\program\.Gsing\.data\task"
+    ORIGINAL_COCO_JSON = r"C:\Users\23615\Desktop\.hyper\PC\CV\data\img\task\task-coco.json"
+    ORIGINAL_TRAIN_IMAGE_DIR = r"C:\Users\23615\Desktop\.hyper\PC\CV\data\img\task\images\train"
+    OUTPUT_TASK_DIR = r"C:\Users\23615\Desktop\.hyper\PC\CV\data\img\task"
     
     # 执行 8:2 拆分操作
     try:

@@ -1,5 +1,5 @@
 # ====================== 训练结果保存路径 (英文路径，不要改) ======================
-save_dir: C:\Users\hyper\Desktop\program\.Gsing\NanoDet\runs_math
+save_dir: C:\Users\23615\Desktop\.hyper\PC\CV\NanoDet\runs_math
 
 # ====================== 类别配置 严格匹配你的coco_detection.json 16类 一字不差 ======================
 class_names: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-', 'x', '÷', '(', ')']
@@ -53,8 +53,8 @@ model:
 data:
   train:
     name: CocoDataset
-    img_path: C:\Users\hyper\Desktop\program\.Gsing\data\video_extract_images
-    ann_path: C:\Users\hyper\Desktop\program\.Gsing\data\annotations\coco_detection.json
+    img_path: C:\Users\23615\Desktop\.hyper\PC\CV\data\img\math\images
+    ann_path: C:\Users\23615\Desktop\.hyper\PC\CV\data\img\math\labels\coco_detection.json
     input_size: [640, 1024]
     keep_ratio: True
     pipeline:
@@ -74,8 +74,8 @@ data:
 
   val:
     name: CocoDataset
-    img_path: C:\Users\hyper\Desktop\program\.Gsing\data\video_extract_images
-    ann_path: C:\Users\hyper\Desktop\program\.Gsing\data\annotations\coco_detection.json
+    img_path: C:\Users\23615\Desktop\.hyper\PC\CV\data\img\math\images
+    ann_path: C:\Users\23615\Desktop\.hyper\PC\CV\data\img\math\labels\coco_detection.json
     input_size: [640, 1024]
     keep_ratio: True
     pipeline:

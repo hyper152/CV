@@ -1,6 +1,6 @@
 # data.yaml - 自动从train中抽取20%作为验证集
 nc: 4  # 类别数量
 names: ['tool','device','food','remedy']  # 类别名称
-train: C:\Users\hyper\Desktop\program\.Gsing\data\math_yolo\train\images  # 总数据集路径
-val: C:\Users\hyper\Desktop\program\.Gsing\data\math_yolo\train\images    # val与train路径相同
+train: C:\Users\23615\Desktop\.hyper\PC\CV\data\img\task\images
+val: C:\Users\23615\Desktop\.hyper\PC\CV\data\img\task\images
 val_split: 0.2  # 核心参数：抽取20%作为验证集（注意是冒号:，不是等号=）

@@ -3,8 +3,8 @@ nc: 16  # 类别总数，你的0-9+四则+括号 正好16类 ✔️
 names: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, '+', '-', 'x', '÷', '(', ')']  # 类别名称完全正确 ✔️
 
 # ✅ train和val路径（YOLOv8在Windows下推荐用 / 斜杠）
-train: C:/Users/23615/Desktop/.hyper/Gsing-log/data/math/images
-val: C:/Users/23615/Desktop/.hyper/Gsing-log/data/math/images
+train: C:/Users/23615/Desktop/.hyper/PC/CV/data/img/math/images
+val: C:/Users/23615/Desktop/.hyper/PC/CV/data/img/math/images
 
 # 注：YOLOv8 data.yaml 不支持 train_val_split 自动划分
 # 如需拆分验证集，需手动分成 train/ 和 val/ 两个目录

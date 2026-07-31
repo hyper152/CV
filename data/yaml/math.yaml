@@ -1,8 +1,8 @@
 # X-AnyLabeling task1 模型配置 - 修正版
-name: task
-display_name: task
+name: math
+display_name: math  
 type: yolov8
-model_path: C:\Users\23615\Desktop\.hyper\PC\CV\YOLO\weights\task2.onnx
+model_path: C:\Users\23615\Desktop\.hyper\PC\CV\YOLO\weights\math.onnx
 input_width: 960
 input_height: 960
 stride: 32
@@ -11,7 +11,7 @@ nms_threshold: 0.45
 device: cuda:0  # 或改为 "cpu" 如果GPU有问题
 
 # 关键修正：使用 classes 而不是 labels
-classes: ["tool", "device", "food", "remedy"]
+classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, '+', '-', 'x', '÷', '(', ')']
 
 # ONNX模型输入输出配置
 input_name: "images"  # 确认ONNX模型输入名
