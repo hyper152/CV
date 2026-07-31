@@ -2,11 +2,14 @@ from ultralytics import YOLO  # 导入Ultralytics的YOLOv8核心类
 import os                     # 导入os库，用于路径处理和文件存在性判断
 
 # ===================== 全局配置：路径与权重设置 =====================
-# 1. 你的data.yaml（保持原有路径不变）
-DATA = r"C:\Users\hyper\Desktop\program\.Gsing\YOLO\yaml\math.yaml"
-    
-# 2. 权重路径（简化，避免层级错误，保持原有路径不变）
-WEIGHTS_DIR = r"C:\Users\hyper\Desktop\program\.Gsing\YOLO\weights"
+# 获取当前脚本所在目录，构建相对路径
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # CV/YOLO/
+
+# 1. 你的data.yaml
+DATA = os.path.join(BASE_DIR, "yaml", "math.yaml")
+
+# 2. 权重路径
+WEIGHTS_DIR = os.path.join(BASE_DIR, "weights")
 os.makedirs(WEIGHTS_DIR, exist_ok=True)
 WEIGHTS = os.path.join(WEIGHTS_DIR, 'yolov8s.pt')
 
